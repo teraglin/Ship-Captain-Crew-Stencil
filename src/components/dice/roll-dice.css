@@ -1,0 +1,26 @@
+.dice-button {
+  background-color: lightgreen;
+  width: 50px;
+  height: 50px;
+  margin: 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.button-hover {
+  display: none;
+}
+
+.dice-button:hover .button-hover {
+  display: inline-block;
+}
+
+.button-value {
+  display: block;
+  color: white;
+}
+
+.dice-button:hover .button-value {
+  display: none;
+}
