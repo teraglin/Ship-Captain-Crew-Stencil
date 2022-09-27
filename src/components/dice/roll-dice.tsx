@@ -1,4 +1,4 @@
-import { Component, State, h, Prop } from '@stencil/core';
+import { Component, h, Prop } from '@stencil/core';
 
 @Component({
   tag: 'roll-dice',
@@ -10,7 +10,10 @@ export class RollDice {
    */
   @Prop() value: number;
 
-  renderText() {
+  /**
+   * Function that determines the hover text for certain dice
+   */
+  private renderText() {
     if (this.value === 6 ) {
       return "ship"
     }

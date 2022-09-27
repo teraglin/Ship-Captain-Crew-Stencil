@@ -1,4 +1,4 @@
-import { Component, State, Prop, h } from '@stencil/core';
+import { Component, State, h } from '@stencil/core';
 
 @Component({
   tag: 'game-window',
@@ -8,7 +8,6 @@ export class GameWindow {
   @State() dicePool: number = 0;
   @State() rolledDice: number[] = [];
   @State() loot: number[] = [];
-
   @State() turn: number = 0;
 
   /**
@@ -21,24 +20,36 @@ export class GameWindow {
     this.rollDice();
     this.turn = 1;
   };
-  
+
+  /**
+   * Function that starts the game
+   */
   private reset = () => {
     this.startGame();
   };
 
+  /**
+   * Function that rolls the avaliable pool of dice
+   */
   private rollDice() {
     this.rolledDice = [];
-    for (let i = 0; i <= this.dicePool; i++) {
+    for (let i = 0; i < this.dicePool; i++) {
       this.rolledDice.push(Math.ceil(Math.random() * 6));
     }
   }
 
+  /**
+   * Function that adds dice to your store
+   */
   private addDice = (value: number, index: number) => {
     this.loot.push(value);
     this.rolledDice.splice(index, 1);
     this.dicePool = this.dicePool - 1;
   };
 
+  /**
+   * Function that removes dice from your store
+   */
   private removeDice = (value: number, index: number) => {
     this.loot.splice(index, 1);
     this.rolledDice.splice(index, 0, value);
